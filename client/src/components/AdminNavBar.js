@@ -25,6 +25,7 @@ const adminNavBar = observer(() => {
   const logOut = () => {
     user.setUser({});
     user.setIsAuth(false);
+    user.setRole(false);
     localStorage.removeItem('token');
     navigate(LOGIN_ROUTE);
   };
