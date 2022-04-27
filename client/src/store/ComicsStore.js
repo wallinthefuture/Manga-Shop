@@ -5,7 +5,7 @@ export default class ComicsStore {
     this._types = [];
     this._genres = [];
     this._comicses = [];
-    this._selectedType = {};
+    this._selectedType = {} || true;
     this._selectedGenre = {};
     makeAutoObservable(this);
   }

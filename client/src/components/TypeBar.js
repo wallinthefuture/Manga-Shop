@@ -12,7 +12,9 @@ const TypeBar = observer(() => {
           style={{ cursor: 'pointer' }}
           key={type.id}
           active={type.id === comics.selectedType.id}
-          onClick={() => comics.setSelectedType(type)}
+          onClick={() => {
+            comics.setSelectedType(type);
+          }}
         >
           {type.name}
         </ListGroup.Item>
