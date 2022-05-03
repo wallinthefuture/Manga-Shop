@@ -9,6 +9,7 @@ const ComicsList = observer(() => {
 
   return (
     <div>
+      {console.log(comics.selectedType.id)}
       {comics.selectedType.id === undefined ? (
         <Row className="d-flex">
           {comics.comicses.map((com) => (

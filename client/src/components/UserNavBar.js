@@ -22,6 +22,7 @@ import { check } from '../http/userAPI';
 const userNavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
+  const { comics } = useContext(Context);
 
   const logOut = () => {
     user.setUser({});
@@ -34,7 +35,14 @@ const userNavBar = observer(() => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <NavLink style={{ color: 'black' }} to={SHOP_ROUTE}>
+        <NavLink
+          style={{ color: 'black' }}
+          to={SHOP_ROUTE}
+          onClick={() => {
+            comics.setSelectedType.id = undefined;
+            console.log(comics.setSelectedType.id);
+          }}
+        >
           MangoManga
         </NavLink>
 
