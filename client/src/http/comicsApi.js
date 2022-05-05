@@ -36,8 +36,14 @@ export const createComics = async (comics) => {
   return data;
 };
 
-export const fetchComics = async () => {
-  const { data } = await $host.get('api/comics');
+export const fetchComics = async (typeId, page, limit = 5) => {
+  const { data } = await $host.get('api/comics', {
+    params: {
+      typeId,
+      page,
+      limit,
+    },
+  });
   return data;
 };
 

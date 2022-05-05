@@ -11,6 +11,7 @@ const ComicsItem = ({ comics }) => {
         style={{ width: 300, cursor: 'pointer' }}
         border={'dark'}
         onClick={() => navigate(COMICS_ROUTE + '/' + comics.id)}
+        className="mt-2 mb-2"
       >
         <Image
           width={300}

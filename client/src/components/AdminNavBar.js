@@ -12,6 +12,7 @@ import {
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   ADMIN_ROUTE,
+  BASKET_ROUTE,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
   SHOP_ROUTE,
@@ -59,7 +60,12 @@ const adminNavBar = observer(() => {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav> */}
-
+              <ion-icon
+                name="bag-outline"
+                size="large"
+                style={{ padding: 10, cursor: 'pointer' }}
+                onClick={() => navigate(BASKET_ROUTE)}
+              ></ion-icon>
               <Form className="d-flex">
                 <FormControl
                   type="search"
@@ -67,7 +73,7 @@ const adminNavBar = observer(() => {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success" className="me-2">
+                <Button variant="outline-success" className="me-2 ">
                   Search
                 </Button>
 

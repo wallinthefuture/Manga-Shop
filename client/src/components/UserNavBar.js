@@ -12,6 +12,7 @@ import {
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   ADMIN_ROUTE,
+  BASKET_ROUTE,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
   SHOP_ROUTE,
@@ -23,7 +24,7 @@ const userNavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
   const { comics } = useContext(Context);
-
+  const pathName = document.location.pathname;
   const logOut = () => {
     user.setUser({});
     user.setIsAuth(false);
@@ -35,14 +36,7 @@ const userNavBar = observer(() => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <NavLink
-          style={{ color: 'black' }}
-          to={SHOP_ROUTE}
-          onClick={() => {
-            comics.setSelectedType.id = undefined;
-            console.log(comics.setSelectedType.id);
-          }}
-        >
+        <NavLink style={{ color: 'black' }} to={SHOP_ROUTE}>
           MangoManga
         </NavLink>
 
@@ -68,7 +62,23 @@ const userNavBar = observer(() => {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav> */}
-
+              {pathName !== '/basket' ? (
+                <div>
+                  <ion-icon
+                    name="bag-outline"
+                    size="large"
+                    style={{ padding: 10, cursor: 'pointer' }}
+                    onClick={() => navigate(BASKET_ROUTE)}
+                  ></ion-icon>
+                </div>
+              ) : (
+                <ion-icon
+                  name="bag-check-outline"
+                  size="large"
+                  style={{ padding: 10, cursor: 'pointer' }}
+                  onClick={() => navigate(BASKET_ROUTE)}
+                ></ion-icon>
+              )}
               <Form className="d-flex">
                 <FormControl
                   type="search"
@@ -79,6 +89,7 @@ const userNavBar = observer(() => {
                 <Button variant="outline-success" className="me-2">
                   Search
                 </Button>
+
                 <Button
                   variant={'outline-success'}
                   className="me-2"
