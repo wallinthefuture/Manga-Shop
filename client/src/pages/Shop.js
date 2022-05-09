@@ -17,6 +17,7 @@ const Shop = observer(() => {
     fetchComics(null, 1, 6).then((data) => {
       comics.setComicses(data.rows);
       comics.setTotalCount(data.count);
+      comics.setComicsesCount(data.count);
     });
   }, []);
 

@@ -16,9 +16,8 @@ const App = observer(() => {
     check()
       .then((data) => {
         console.log(data);
-        user.setUser(true);
+        user.setUser(data);
         user.setIsAuth(true);
-        if (data.role === 'ADMIN') user.setRole(true);
       })
       .finally(() => setLoading(false));
   }, []);

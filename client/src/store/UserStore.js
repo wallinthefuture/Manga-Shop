@@ -23,10 +23,14 @@ export default class UserStore {
   get isAuth() {
     return this._isAuth;
   }
-  get user() {
+  get userInfo() {
     return this._user;
   }
   get role() {
     return this._role;
+  }
+
+  get comicsesCount() {
+    return this._comicsesCount;
   }
 }

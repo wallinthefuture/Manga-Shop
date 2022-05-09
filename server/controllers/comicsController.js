@@ -6,11 +6,10 @@ const ApiError = require('../error/ApiError');
 class ComicsController {
   async create(req, res, next) {
     try {
-      console.log(req.body);
       const { name, price, comicsGenres, typeId, description } = req.body;
-      console.log(req.files);
+
       const { img } = req.files;
-      console.log(img);
+
       let fileName = uuid.v4() + '.jpg';
       img.mv(path.resolve(__dirname, '..', 'static', fileName));
 
@@ -73,6 +72,12 @@ class ComicsController {
       ],
     });
     return res.json(comics);
+  }
+  async deleteComics(req, res) {
+    const { comicsId } = req.query;
+    console.log(comicsId);
+    const count = await Comics.destroy({ where: { id: comicsId } });
+    return res.count;
   }
 }
 

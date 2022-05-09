@@ -36,12 +36,13 @@ export const createComics = async (comics) => {
   return data;
 };
 
-export const fetchComics = async (typeId, page, limit = 5) => {
+export const fetchComics = async (typeId, page, limit = 5, deleteCount) => {
   const { data } = await $host.get('api/comics', {
     params: {
       typeId,
       page,
       limit,
+      deleteCount,
     },
   });
   return data;
@@ -49,5 +50,15 @@ export const fetchComics = async (typeId, page, limit = 5) => {
 
 export const fetchOneComics = async (id) => {
   const { data } = await $host.get('api/comics/' + id);
+  return data;
+};
+
+export const deleteComicsInShop = async (id) => {
+  const { data } = await $authHost.delete('api/comics', {
+    params: {
+      comicsId: id,
+    },
+  });
+  console.log(data);
   return data;
 };

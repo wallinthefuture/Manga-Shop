@@ -10,6 +10,7 @@ export default class ComicsStore {
     this._page = 1;
     this._totalCount = 0;
     this._limit = 3;
+    this._comicsesCount = 0;
     makeAutoObservable(this);
   }
 
@@ -36,6 +37,11 @@ export default class ComicsStore {
   setTotalCount(count) {
     this._totalCount = count;
   }
+
+  setComicsesCount(count) {
+    this._comicsesCount = count;
+  }
+
   get types() {
     return this._types;
   }
@@ -62,5 +68,9 @@ export default class ComicsStore {
   }
   get limit() {
     return this._limit;
+  }
+
+  get comicsesCount() {
+    return this._comicsesCount;
   }
 }

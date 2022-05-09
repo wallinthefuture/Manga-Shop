@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import UserStore from './store/UserStore';
 import ComicsStore from './store/ComicsStore';
+import BasketStore from './store/BasketStore';
 
 export const Context = createContext(null);
 
@@ -12,6 +13,7 @@ ReactDOM.render(
     value={{
       user: new UserStore(),
       comics: new ComicsStore(),
+      basket: new BasketStore(),
     }}
   >
     <App />
