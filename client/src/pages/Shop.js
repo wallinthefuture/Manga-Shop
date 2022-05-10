@@ -28,6 +28,18 @@ const Shop = observer(() => {
     });
   }, [comics.page, comics.selectedType]);
 
+  useEffect(() => {
+    fetchComics(
+      comics.selectedType.id,
+      comics.page,
+      6,
+      comics.searchNameOfComics
+    ).then((data) => {
+      comics.setComicses(data.rows);
+      comics.setTotalCount(data.count);
+    });
+  }, [comics.searchNameOfComics]);
+
   return (
     <Container>
       <Row className="mt-2 ml-0">

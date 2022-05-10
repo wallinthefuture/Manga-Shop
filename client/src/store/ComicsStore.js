@@ -7,6 +7,7 @@ export default class ComicsStore {
     this._comicses = [];
     this._selectedType = {};
     this._selectedGenre = {};
+    this._searchNameOfComics = '';
     this._page = 1;
     this._totalCount = 0;
     this._limit = 3;
@@ -41,6 +42,9 @@ export default class ComicsStore {
   setComicsesCount(count) {
     this._comicsesCount = count;
   }
+  setSearchNameOfComics(name) {
+    this._searchNameOfComics = name;
+  }
 
   get types() {
     return this._types;
@@ -72,5 +76,9 @@ export default class ComicsStore {
 
   get comicsesCount() {
     return this._comicsesCount;
+  }
+
+  get searchNameOfComics() {
+    return this._searchNameOfComics;
   }
 }

@@ -22,7 +22,7 @@ import { observer } from 'mobx-react-lite';
 const adminNavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
-
+  const { comics } = useContext(Context);
   const logOut = () => {
     user.setUser({});
     user.setIsAuth(false);
@@ -35,7 +35,7 @@ const adminNavBar = observer(() => {
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <NavLink style={{ color: 'black' }} to={SHOP_ROUTE}>
-          MangoManga
+          MangoShop
         </NavLink>
 
         {user.isAuth ? (
@@ -68,10 +68,14 @@ const adminNavBar = observer(() => {
               ></ion-icon>
               <Form className="d-flex">
                 <FormControl
+                  value={comics.searchNameOfComics}
                   type="search"
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  onChange={(e) => {
+                    comics.setSearchNameOfComics(e.target.value);
+                  }}
                 />
                 <Button variant="outline-success" className="me-2 ">
                   Search
@@ -121,10 +125,14 @@ const adminNavBar = observer(() => {
 
               <Form className="d-flex">
                 <FormControl
+                  value={comics.searchNameOfComics}
                   type="search"
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  onChange={(e) => {
+                    comics.setSearchNameOfComics(e.target.value);
+                  }}
                 />
                 <Button variant="outline-success" className="me-2">
                   Search

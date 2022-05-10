@@ -37,9 +37,10 @@ class ComicsController {
     }
   }
   async getAll(req, res) {
-    let { typeId, limit = 9, page = 1 } = req.query;
+    let { typeId, limit = 9, page = 1, name } = req.query;
     let offset = page * limit - limit;
     let comics;
+    let searchComics;
     if (!typeId) {
       comics = await Comics.findAndCountAll({
         limit,
@@ -51,6 +52,46 @@ class ComicsController {
         where: {
           typeId,
         },
+        limit,
+        offset,
+      });
+    }
+    if (typeId && name) {
+      searchComics = await Comics.findAndCountAll({
+        where: {
+          name,
+        },
+        limit,
+        offset,
+      });
+      if (searchComics.count == 0) {
+        comics = await Comics.findAndCountAll({
+          limit,
+          offset,
+        });
+      } else {
+        comics = searchComics;
+      }
+    }
+    if (!typeId && name) {
+      searchComics = await Comics.findAndCountAll({
+        where: {
+          name,
+        },
+        limit,
+        offset,
+      });
+      if (searchComics.count == 0) {
+        comics = await Comics.findAndCountAll({
+          limit,
+          offset,
+        });
+      } else {
+        comics = searchComics;
+      }
+    }
+    if (!typeId && !name) {
+      comics = await Comics.findAndCountAll({
         limit,
         offset,
       });

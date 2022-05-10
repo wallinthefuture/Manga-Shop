@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '..';
 import {
   Navbar,
@@ -24,6 +24,7 @@ const userNavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
   const { comics } = useContext(Context);
+
   const pathName = document.location.pathname;
   const logOut = () => {
     user.setUser({});
@@ -37,7 +38,7 @@ const userNavBar = observer(() => {
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <NavLink style={{ color: 'black' }} to={SHOP_ROUTE}>
-          MangoManga
+          MangoShop
         </NavLink>
 
         {user.isAuth ? (
@@ -81,10 +82,14 @@ const userNavBar = observer(() => {
               )}
               <Form className="d-flex">
                 <FormControl
+                  value={comics.searchNameOfComics}
                   type="search"
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  onChange={(e) => {
+                    comics.setSearchNameOfComics(e.target.value);
+                  }}
                 />
                 <Button variant="outline-success" className="me-2">
                   Search
@@ -126,10 +131,14 @@ const userNavBar = observer(() => {
 
               <Form className="d-flex">
                 <FormControl
+                  value={comics.searchNameOfComics}
                   type="search"
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  onChange={(e) => {
+                    comics.setSearchNameOfComics(e.target.value);
+                  }}
                 />
                 <Button variant="outline-success" className="me-2">
                   Search
