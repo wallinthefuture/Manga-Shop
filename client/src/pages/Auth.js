@@ -71,7 +71,7 @@ const Auth = observer(() => {
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group>
           <Button variant="primary" className="mb-2" onClick={click}>
-            {isLogin ? 'Submit' : 'Registration'}
+            {isLogin ? 'Login' : 'Registration'}
           </Button>
           {isLogin ? (
             <div>

@@ -22,12 +22,12 @@ const ComicsItem = observer(({ com }) => {
       console.log(comics.comicsesCount);
     });
   }
-  useEffect(() => {
-    fetchComics(null, 1, 6).then((data) => {
-      comics.setComicses(data.rows);
-      comics.setTotalCount(data.count);
-    });
-  }, [comics.comicsesCount]);
+  // useEffect(() => {
+  //   fetchComics(null, 1, 6).then((data) => {
+  //     comics.setComicses(data.rows);
+  //     comics.setTotalCount(data.count);
+  //   });
+  // }, [comics.comicsesCount]);
   return (
     <Col md={4}>
       <Card

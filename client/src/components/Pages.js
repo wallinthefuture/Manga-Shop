@@ -5,7 +5,8 @@ import { Context } from '..';
 
 const Pages = observer(() => {
   const { comics } = useContext(Context);
-  const pageCount = Math.ceil(comics.totalCount / comics.comicses.length);
+  const pageCount = Math.ceil(comics.totalCount / comics.limit);
+
   const pages = [];
 
   for (let i = 0; i < pageCount; i++) {

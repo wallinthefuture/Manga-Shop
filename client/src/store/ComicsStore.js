@@ -10,7 +10,7 @@ export default class ComicsStore {
     this._searchNameOfComics = '';
     this._page = 1;
     this._totalCount = 0;
-    this._limit = 3;
+    this._limit = 6;
     this._comicsesCount = 0;
     makeAutoObservable(this);
   }
